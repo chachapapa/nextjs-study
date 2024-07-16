@@ -103,3 +103,80 @@ The `/dashboard/settings` route is composed of three segments:
 > - `/` (루트 세그먼트)
 > - `dashboard` (세그먼트)
 > - `setting` (리프 세그먼트)
+
+## File Conventions
+
+Next.js provides a set of special files to create UI with specific behavior in nested routes:
+
+> Next.js는 중첩 라우트에서 특정 작업을 위한 UI생성을 위해 특수 파일 세트를 제공합니다:
+
+|File|Description|
+|:-----|:----------|
+|`layout`| 세그먼트와 그 자식들을 위한 공유 UI|
+|`page`|	경로의 고유 UI를 정의하고, 경로의 공개적인 접근 활성화|
+|`loading`|	세그먼트와 그 자식들을 위한 로딩 UI|
+|`not-found`|	세그먼트와 그 자식들을 위한 '페이지를 찾을 수 없음' UI|
+|`error`|	세그먼트와 그 자식들을 위한 에러 UI|
+|`global-error`|	전역 에러 UI|
+|`route`|	서버 측 API 엔드포인트|
+|`template`|	리렌더링을 위한 레이아웃 UI|
+|`default`|	병렬 라우트의 기본 UI|
+
+**Good to know**: 
+
+`.js`, `.jsx`, or `.tsx` file extensions can be used for special files.
+
+> **참고사항**:
+>
+> `.js`, `.jsx`, 또는 `.tsx` 파일 확장자를 특수 파일에 사용할 수 있습니다.
+
+## Component Hierarchy
+The React components defined in special files of a route segment are rendered in a specific hierarchy:
+
+> 라우트 세그먼트의 특수 파일에 정의된 React 컴포넌트들은 특정한 계층 구조를 바탕으로 렌더링됩니다:
+
+- `layout.js`
+- `template.js`
+- `error.js` (React error boundary)
+- `loading.js` (React suspense boundary)
+- `not-found.js` (React error boundary)
+- `page.js` or nested `layout.js`
+
+![image](https://github.com/user-attachments/assets/13e89b76-c5ba-4a63-ac75-0880b1a76af3)
+
+In a nested route, the components of a segment will be nested inside the components of its parent segment.
+
+> 중첩라우트에서는, 세그먼트의 컴포넌트들이 부모 세그먼트의 컴포넌트 내부에 중첩됩니다.
+
+![image](https://github.com/user-attachments/assets/20ea5d75-f562-4cfe-98d3-3dd9b83843da)
+
+## Colocation
+In addition to special files, you have the option to colocate your own files (e.g. components, styles, tests, etc) inside folders in the `app` directory.
+
+This is because while folders define routes, only the contents returned by `page.js` or `route.js` are publicly addressable.
+
+> 특수 파일 외에도, `app` 디렉토리 내의 폴더에 자신의 파일(예: 컴포넌트, 스타일, 테스트 등)을 함께 둘 수 있습니다.
+>
+> 이는 폴더가 라우트를 정의하지만, `page.js` 또는 `route.js`에서 반환되는 내용만 공개적으로 접근할 수 있기 때문입니다.
+
+![image](https://github.com/user-attachments/assets/01fb5847-c811-4211-9fc0-ca6090e6b0fb)
+
+Learn more about [Project Organization and Colocation](https://nextjs.org/docs/app/building-your-application/routing/colocation).
+
+>  [Project Organization and Colocation](https://nextjs.org/docs/app/building-your-application/routing/colocation) 에 대해 더 학습해 보세요.
+
+## Advanced Routing Patterns
+The App Router also provides a set of conventions to help you implement more advanced routing patterns. These include:
+
+- [Parallel Routes](https://nextjs.org/docs/app/building-your-application/routing/parallel-routes): Allow you to simultaneously show two or more pages in the same view that can be navigated independently. You can use them for split views that have their own sub-navigation. E.g. Dashboards.
+- [Intercepting Routes](https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes): Allow you to intercept a route and show it in the context of another route. You can use these when keeping the context for the current page is important. E.g. Seeing all tasks while editing one task or expanding a photo in a feed.
+
+These patterns allow you to build richer and more complex UIs, democratizing features that were historically complex for small teams and individual developers to implement.
+
+>App Router는 더 발전된 라우팅 패턴을 구현하는 데 도움이 되는 일련의 규칙도 제공합니다. 이에는 다음과 같은 패턴들이 포함됩니다:
+>
+> - [병렬 라우트](https://nextjs.org/docs/app/building-your-application/routing/parallel-routes): 하나의 뷰에서 동시에 두 개 이상의 페이지를 표시할 수 있으며, 이들은 독립적으로 탐색할 수 있습니다. 이는 각각 자체 하위 탐색을 가진 분할 뷰(예: 대시보드)에 사용할 수 있습니다.
+>
+> - [라우트 중간 처리](https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes): 특정 라우트를 가로채고 다른 라우트의 맥락에서 표시할 수 있습니다. 이는 현재 페이지의 컨텍스트를 유지하는 것이 중요할 때 유용합니다. 예를 들어, 한 작업을 편집하는 동안 모든 작업을 볼 수 있는 상황이거나, 피드에서 사진을 확대하는 경우 등에 사용할 수 있습니다.
+>
+>이러한 패턴들은 보다 풍부하고 복잡한 UI를 구축할 수 있도록 도와주며, 이전에는 작은 팀이나 개발자 개인이 구현하기 어려웠던 기능들을 더 쉽게 구현할 수 있도록 합니다.
