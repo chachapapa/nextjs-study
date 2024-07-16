@@ -8,7 +8,7 @@ The skeleton of every application is routing. This page will introduce you to th
 
 First, you will see these terms being used throughout the documentation. Here's a quick reference:
 
-> 먼저, 문서 전체에서 사용되는 용어에 대한 설명입니다. 다음은 빠른 참조입니다:
+> 먼저, 문서 전체에서 사용되는 용어에 대한 설명입니다. 예를 들어:
 
 ![Terminology for Component Tree](https://github.com/user-attachments/assets/a768786d-c9d0-4aa4-b6fc-e50383c5aa45)
 
@@ -75,7 +75,31 @@ Next.js uses a file-system based router where:
 >
 > - **파일**은 라우트 세그먼트에 표시되는 UI를 생성하는 데 사용됩니다. 자세한 내용은 [특수 파일](https://nextjs.org/docs/app/building-your-application/routing#file-conventions) 섹션을 참조하세요.
 
+## Route Segments
+
+Each folder in a route represents a route segment. Each route segment is mapped to a corresponding segment in a URL path.
+
+> 각각의 경로 내 폴더는 라우트 세그먼트를 나타냅니다.각 라우트 세그먼트는 URL 내의 일치하는 세그먼트에 매핑됩니다.
+
+![image](https://github.com/user-attachments/assets/08dd57f8-0f01-4089-b73f-4dd1ba5d5971)
+
+## Nested Routes
+
+To create a nested route, you can nest folders inside each other. For example, you can add a new `/dashboard/settings` route by nesting two new folders in the `app` directory.
+
+The `/dashboard/settings` route is composed of three segments:
 
 
+- `/` (Root segment)
 
+- `dashboard` (Segment)
 
+- `settings` (Leaf segment)
+
+> 중첩 라우트를 생성하기 위해, 폴더내에 또다른 폴더를 중첩시킬 수 있습니다. 예를 들어, `/dashboard/settings` 경로를 만들기 위해 `app` 디렉토리에 두 개의 새로운 폴더를 중첩할 수 있습니다.
+>
+> `/dashboard/settings` 경로는 세 개의 세그먼트로 구성됩니다:
+>
+> - `/` (루트 세그먼트)
+> - `dashboard` (세그먼트)
+> - `setting` (리프 세그먼트)
