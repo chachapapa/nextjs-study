@@ -173,10 +173,10 @@ The App Router also provides a set of conventions to help you implement more adv
 
 These patterns allow you to build richer and more complex UIs, democratizing features that were historically complex for small teams and individual developers to implement.
 
->App Router는 더 발전된 라우팅 패턴을 구현하는 데 도움이 되는 일련의 규칙도 제공합니다. 이에는 다음과 같은 패턴들이 포함됩니다:
+>App Router는 더 발전된 라우팅 패턴을 구현하는 데 도움이 되는 규칙을 제공합니다. 이에는 다음과 같은 패턴들이 포함됩니다:
 >
-> - [병렬 라우트](https://nextjs.org/docs/app/building-your-application/routing/parallel-routes): 하나의 뷰에서 동시에 두 개 이상의 페이지를 표시할 수 있으며, 이들은 독립적으로 탐색할 수 있습니다. 이는 각각 자체 하위 탐색을 가진 분할 뷰(예: 대시보드)에 사용할 수 있습니다.
+> - [병렬 라우트](https://nextjs.org/docs/app/building-your-application/routing/parallel-routes): 하나의 뷰에서 동시에 두 개 이상의 페이지를 표시할 수 있으며, 이들은 독립적으로 탐색할 수 있습니다. 이는 각각 자체 서브 네비게이션을 가진 분할 뷰(예: 대시보드)에 사용할 수 있습니다.
 >
-> - [라우트 중간 처리](https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes): 특정 라우트를 가로채고 다른 라우트의 맥락에서 표시할 수 있습니다. 이는 현재 페이지의 컨텍스트를 유지하는 것이 중요할 때 유용합니다. 예를 들어, 한 작업을 편집하는 동안 모든 작업을 볼 수 있는 상황이거나, 피드에서 사진을 확대하는 경우 등에 사용할 수 있습니다.
+> - [라우트 중간 처리](https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes): 특정 라우트를 가로채고 다른 라우트의 환경에서 표시할 수 있습니다. 이는 현재 페이지의 컨텍스트를 유지하는 것이 중요할 때 유용합니다. 예를 들어, 한 작업을 편집하는 동안 모든 작업을 볼 수 있는 상황이거나, 피드에서 사진을 확대하는 경우 등에 사용할 수 있습니다.
 >
 >이러한 패턴들은 보다 풍부하고 복잡한 UI를 구축할 수 있도록 도와주며, 이전에는 작은 팀이나 개발자 개인이 구현하기 어려웠던 기능들을 더 쉽게 구현할 수 있도록 합니다.
